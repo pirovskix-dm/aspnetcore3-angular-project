@@ -13,10 +13,11 @@ namespace ExploringTheCore.Filters
             if (context.Exception is IApiException apiException)
             {
                 context.Result = apiException.GetResult();
-                return;
             }
-
-            HandleInternalServerError(context);
+            else
+            {
+                HandleInternalServerError(context);
+            }
         }
 
         private void HandleInternalServerError(ExceptionContext context)

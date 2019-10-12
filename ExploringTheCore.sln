@@ -9,9 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExploringTheCore.Core", "Ex
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExploringTheCore.TestData", "ExploringTheCore.TestData\ExploringTheCore.TestData.csproj", "{06418BC6-4D73-46F0-AB11-CC573E05ECBA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExploringTheCore.Utils", "ExploringTheCore.Utils\ExploringTheCore.Utils.csproj", "{67A3E9F0-6285-4568-B18A-50B3BF8F1BC9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExploringTheCore.Utils", "ExploringTheCore.Utils\ExploringTheCore.Utils.csproj", "{67A3E9F0-6285-4568-B18A-50B3BF8F1BC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExploringTheCore.BLL", "ExploringTheCore.BLL\ExploringTheCore.BLL.csproj", "{4FD49195-1C7A-4277-8C90-8CB5543F4EA7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExploringTheCore.BLL", "ExploringTheCore.BLL\ExploringTheCore.BLL.csproj", "{4FD49195-1C7A-4277-8C90-8CB5543F4EA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExploringTheCore.Api", "ExploringTheCore.Api\ExploringTheCore.Api.csproj", "{87A5E320-C9B0-4A05-B6CB-F072811755AE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{4FD49195-1C7A-4277-8C90-8CB5543F4EA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4FD49195-1C7A-4277-8C90-8CB5543F4EA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4FD49195-1C7A-4277-8C90-8CB5543F4EA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87A5E320-C9B0-4A05-B6CB-F072811755AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87A5E320-C9B0-4A05-B6CB-F072811755AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87A5E320-C9B0-4A05-B6CB-F072811755AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87A5E320-C9B0-4A05-B6CB-F072811755AE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

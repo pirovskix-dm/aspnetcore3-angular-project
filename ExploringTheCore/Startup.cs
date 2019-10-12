@@ -38,12 +38,15 @@ namespace ExploringTheCore
                 .AddMvc(option =>
                 {
                     option.Filters.Add(typeof(ApiExceptionFilter));
+                    option.EnableEndpointRouting = false;
                 })
                 .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
                 .AddFluentValidation(fv =>
                 {
                     fv.RegisterValidatorsFromAssemblyContaining<CreateBlogPostCommand>();
                 });
+
+            services.ConfigureSwagger();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -53,10 +56,11 @@ namespace ExploringTheCore
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors();
+            app.UseMvc();
             app.UseRouting();
-
+            app.UseApiSwagger();
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
