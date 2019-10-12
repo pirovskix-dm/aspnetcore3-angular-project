@@ -1,8 +1,17 @@
+using ExploringTheCore.BLL.Commands;
+using ExploringTheCore.BLL.Commands.BlogPostCommands.Create;
+using ExploringTheCore.Configuration;
+using ExploringTheCore.Filters;
+using FluentValidation.AspNetCore;
+using MediatR;
+using MediatR.Pipeline;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Reflection;
 
 namespace ExploringTheCore
 {
@@ -18,6 +27,23 @@ namespace ExploringTheCore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.ConfigureRrepository();
+
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPreProcessorBehavior<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
+            services.AddMediatR(typeof(Startup).GetTypeInfo().Assembly);
+
+            services
+                .AddMvc(option =>
+                {
+                    option.Filters.Add(typeof(ApiExceptionFilter));
+                })
+                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
+                .AddFluentValidation(fv =>
+                {
+                    fv.RegisterValidatorsFromAssemblyContaining<CreateBlogPostCommand>();
+                });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

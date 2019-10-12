@@ -17,11 +17,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation.AspNetCore" Version="8.5.0" />
+    <PackageReference Include="MediatR" Version="7.0.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.9.5" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Controllers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ExploringTheCore.BLL\ExploringTheCore.BLL.csproj" />
+    <ProjectReference Include="..\ExploringTheCore.Core\ExploringTheCore.Core.csproj" />
+    <ProjectReference Include="..\ExploringTheCore.TestData\ExploringTheCore.TestData.csproj" />
+    <ProjectReference Include="..\ExploringTheCore.Utils\ExploringTheCore.Utils.csproj" />
   </ItemGroup>
 
 </Project>
