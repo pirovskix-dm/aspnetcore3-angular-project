@@ -3,7 +3,7 @@ using System.Net;
 
 namespace ExploringTheCore.Core.Exceptions.Errors
 {
-    public class ApiError
+    public abstract class ApiError
     {
         [JsonProperty("status")]
         public HttpStatusCode Status { get; }

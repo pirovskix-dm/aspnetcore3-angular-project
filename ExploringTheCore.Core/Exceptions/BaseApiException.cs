@@ -2,27 +2,21 @@
 using ExploringTheCore.Core.Exceptions.Errors;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Net;
 
 namespace ExploringTheCore.Core.Exceptions
 {
     public abstract class BaseApiException : Exception, IApiException
     {
-        public string Code { get; }
+        private readonly ApiError apiError;
 
-        public HttpStatusCode Status { get; }
-
-        protected BaseApiException(HttpStatusCode status, string code, string message)
-            : base(message)
+        protected BaseApiException(ApiError apiError)
         {
-            Status = status;
-            Code = code;
+            this.apiError = apiError;
         }
 
         public IActionResult GetResult()
         {
-            var error = new ApiError(Status, Code, Message);
-            return new ObjectResult(error) { StatusCode = (int)error.Status };
+            return new ObjectResult(this.apiError) { StatusCode = (int)this.apiError.Status };
         }
     }
 }

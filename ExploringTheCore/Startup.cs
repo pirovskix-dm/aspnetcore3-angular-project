@@ -47,6 +47,11 @@ namespace ExploringTheCore
                 });
 
             services.ConfigureSwagger();
+
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.SuppressModelStateInvalidFilter = true;
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -56,7 +61,12 @@ namespace ExploringTheCore
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseCors();
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+            );
+
             app.UseMvc();
             app.UseRouting();
             app.UseApiSwagger();

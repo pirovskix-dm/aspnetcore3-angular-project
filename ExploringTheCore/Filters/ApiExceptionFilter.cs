@@ -2,7 +2,6 @@
 using ExploringTheCore.Core.Exceptions.Errors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using System.Net;
 
 namespace ExploringTheCore.Filters
 {
@@ -22,7 +21,7 @@ namespace ExploringTheCore.Filters
 
         private void HandleInternalServerError(ExceptionContext context)
         {
-            var error = new ApiError(HttpStatusCode.InternalServerError, "internal_server_error", context.Exception.Message);
+            var error = new ApiError500(context.Exception.Message);
             context.Result = new ObjectResult(error) { StatusCode = (int)error.Status };
         }
     }
