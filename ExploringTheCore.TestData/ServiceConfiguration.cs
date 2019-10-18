@@ -2,13 +2,14 @@
 using ExploringTheCore.TestData.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace ExploringTheCore.Configuration
+namespace ExploringTheCore.TestData
 {
-    public static class RepositoryConfiguration
+    public static class ServiceConfiguration
     {
-        public static void ConfigureRrepository(this IServiceCollection services)
+        public static void ConfigureTestData(this IServiceCollection services)
         {
             services.AddScoped<IBlogPostRepository, BlogPostRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
     }
 }

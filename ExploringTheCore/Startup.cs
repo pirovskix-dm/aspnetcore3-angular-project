@@ -2,6 +2,7 @@ using ExploringTheCore.BLL.Commands;
 using ExploringTheCore.BLL.Commands.BlogPostCommands.Create;
 using ExploringTheCore.Configuration;
 using ExploringTheCore.Filters;
+using ExploringTheCore.TestData;
 using FluentValidation.AspNetCore;
 using MediatR;
 using MediatR.Pipeline;
@@ -11,7 +12,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System.Reflection;
 
 namespace ExploringTheCore
 {
@@ -28,11 +28,11 @@ namespace ExploringTheCore
         {
             services.AddControllers();
 
-            services.ConfigureRrepository();
+            services.ConfigureTestData();
 
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPreProcessorBehavior<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
-            services.AddMediatR(typeof(Startup).GetTypeInfo().Assembly);
+            services.AddMediatR(typeof(Startup), typeof(RequestValidationBehavior<,>));
 
             services
                 .AddMvc(option =>
